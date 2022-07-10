@@ -74,7 +74,7 @@ class NewStudentContainer extends Component {
         <Header />
         <NewStudentView 
           handleChange = {this.handleChange} 
-          handleSubmit={this.handleSubmit}      
+          handleSubmit = {this.handleSubmit}      
         />
       </div>          
     );
