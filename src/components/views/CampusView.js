@@ -14,13 +14,13 @@ const CampusView = (props) => {
   return (
     <div>
       <h1>{campus.name}</h1>
+      <img src={campus.imageUrl} height="200" width="200" alt="college campus"/>
       <p>Address: {campus.address}</p>
       <p>Description: {campus.description}</p>
-      <div>
-        <Link to={'/campuses'}>
-          <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
-        </Link> 
-      </div>
+      <Link to={'/campuses'}>
+        <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
+      </Link> 
+      <h3>Total Students: {campus.students.length}</h3>
       {campus.students.map( student => {
         let name = student.firstname + " " + student.lastname;
         return (
