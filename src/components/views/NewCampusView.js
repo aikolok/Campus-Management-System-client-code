@@ -57,7 +57,13 @@ const NewCampusView = (props) => {
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Image URL: </label>
-            <input type="text" name="imageUrl" onChange={(e) => handleChange(e)} />
+            <input 
+              type="text" 
+              name="imageUrl" 
+              placeholder="(optional)"
+              value="https://www.campuskit.org/admin/uploads/college-gallery/thumbs/photo-1607237138185-eedd9c632b0b1.jpg" 
+              onChange={(e) => handleChange(e)} 
+            />
             <br/>
             <br/>
 
@@ -67,7 +73,7 @@ const NewCampusView = (props) => {
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Description: </label>
-            <input type="text" name="description" onChange={(e) => handleChange(e)} />
+            <input type="text" name="description" placeholder="Enter Description Here" onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
