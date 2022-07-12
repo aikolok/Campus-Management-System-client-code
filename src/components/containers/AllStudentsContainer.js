@@ -9,11 +9,7 @@ import Header from './Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-
-import { 
-  fetchAllStudentsThunk,
-  deleteStudentThunk
-} from '../../store/thunks';
+import { fetchAllStudentsThunk } from '../../store/thunks';
 
 import AllStudentsView from '../views/AllStudentsView';
 
@@ -28,10 +24,7 @@ class AllStudentsContainer extends Component {
     return(
       <div>
         <Header />
-        <AllStudentsView 
-          students={this.props.allStudents}
-          deleteStudent={this.props.deleteStudent}   
-        />
+        <AllStudentsView students={this.props.allStudents}/>
       </div>
     )
   }
@@ -50,7 +43,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
-    deleteStudent: (studentId) => dispatch(deleteStudentThunk(studentId)),
   };
 };
 
