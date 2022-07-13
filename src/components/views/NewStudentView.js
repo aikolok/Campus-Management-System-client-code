@@ -71,7 +71,6 @@ const NewStudentView = (props) => {
               type="text" 
               name="imageUrl" 
               placeholder="(optional)"
-              value="https://upload.wikimedia.org/wikipedia/commons/7/7c/College_Textbooks.jpg" 
               onChange={(e) => handleChange(e)} 
             />
             <br/>
