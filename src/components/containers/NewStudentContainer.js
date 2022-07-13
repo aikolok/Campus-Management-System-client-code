@@ -21,7 +21,7 @@ class NewStudentContainer extends Component {
       firstname: "", 
       lastname: "", 
       email: "",
-      imageUrl: "",
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7c/College_Textbooks.jpg",
       gpa: null,
       campusId: null, 
       redirect: false, 

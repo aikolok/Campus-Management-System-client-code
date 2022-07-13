@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, deleteCampus} = props;
+  const {campus, deleteCampus, editCampus} = props;
   
   // Render a single Campus view with list of its students
   return (
@@ -17,6 +17,10 @@ const CampusView = (props) => {
       <img src={campus.imageUrl} height="200" width="200" alt="college campus"/>
       <p>Address: {campus.address}</p>
       <p>Description: {campus.description}</p>
+      <Link to={`/editcampus/${campus.id}`}>
+        <button onClick={() => editCampus(campus)}>Edit Campus Information</button>
+      </Link> 
+      <br/><br/>
       <Link to={'/campuses'}>
         <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
       </Link> 

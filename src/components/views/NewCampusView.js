@@ -61,7 +61,6 @@ const NewCampusView = (props) => {
               type="text" 
               name="imageUrl" 
               placeholder="(optional)"
-              value="https://www.campuskit.org/admin/uploads/college-gallery/thumbs/photo-1607237138185-eedd9c632b0b1.jpg" 
               onChange={(e) => handleChange(e)} 
             />
             <br/>

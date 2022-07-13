@@ -10,7 +10,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { 
   fetchCampusThunk,
-  deleteCampusThunk
+  deleteCampusThunk,
+  editCampusThunk
 } from "../../store/thunks";
 
 import { CampusView } from "../views";
@@ -20,7 +21,6 @@ class CampusContainer extends Component {
   componentDidMount() {
     // Get campus ID from URL (API link)
     this.props.fetchCampus(this.props.match.params.id);
-
   }
 
   // Render a Campus view by passing campus data as props to the corresponding View component
@@ -31,6 +31,7 @@ class CampusContainer extends Component {
         <CampusView 
           campus={this.props.campus}
           deleteCampus={this.props.deleteCampus} 
+          editCampus={this.props.editCampus}
         />
       </div>
     );
@@ -51,6 +52,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
     deleteCampus: (campusId) => dispatch(deleteCampusThunk(campusId)),
+    editCampus: (campus) => dispatch(editCampusThunk(campus))
   };
 };
 

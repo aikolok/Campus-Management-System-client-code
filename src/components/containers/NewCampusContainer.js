@@ -19,7 +19,7 @@ class NewCampusContainer extends Component {
     super(props);
     this.state = {
       name: "", 
-      imageUrl: "",
+      imageUrl: "https://www.campuskit.org/admin/uploads/college-gallery/thumbs/photo-1607237138185-eedd9c632b0b1.jpg",
       address: "",
       description: "",
       redirect: false, 
