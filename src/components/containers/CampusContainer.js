@@ -11,16 +11,36 @@ import { connect } from "react-redux";
 import { 
   fetchCampusThunk,
   deleteCampusThunk,
-  editCampusThunk
+  editCampusThunk,
+  editStudentThunk
 } from "../../store/thunks";
 
 import { CampusView } from "../views";
 
 class CampusContainer extends Component {
+  // Initialize state
+  constructor(props){
+    super(props);
+    this.state = {
+      unenrolledStudent: false 
+    };
+  }
   // Get the specific campus data from back-end database
   componentDidMount() {
     // Get campus ID from URL (API link)
     this.props.fetchCampus(this.props.match.params.id);
+  }
+
+  // Unenroll student by their ID
+  unenrollStudent = studentId => {
+    for (let i = 0; i < this.props.campus.students.length; i++) {
+      if (studentId === this.props.campus.students[i].id) {
+        this.props.campus.students[i].campusId = null;
+        this.props.editStudent(this.props.campus.students[i]); // Update student in back-end database
+        this.props.campus.students.splice(i, 1); // Remove student from campus
+      }
+    }
+    this.setState({unenrolledStudent: true});
   }
 
   // Render a Campus view by passing campus data as props to the corresponding View component
@@ -32,6 +52,8 @@ class CampusContainer extends Component {
           campus={this.props.campus}
           deleteCampus={this.props.deleteCampus} 
           editCampus={this.props.editCampus}
+          unenroll={this.unenrollStudent}
+          updateCampusView={this.state.unenrolledStudent}
         />
       </div>
     );
@@ -52,7 +74,8 @@ const mapDispatch = (dispatch) => {
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
     deleteCampus: (campusId) => dispatch(deleteCampusThunk(campusId)),
-    editCampus: (campus) => dispatch(editCampusThunk(campus))
+    editCampus: (campus) => dispatch(editCampusThunk(campus)),
+    editStudent: (student) => dispatch(editStudentThunk(student))
   };
 };
 

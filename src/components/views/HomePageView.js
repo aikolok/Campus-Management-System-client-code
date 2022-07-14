@@ -8,7 +8,9 @@ const HomePageView = () => {
   // Render Home page view
   return (
     <div >
-      <h1>Home Page</h1>
+      <h1 style={{fontWeight: 'bold', fontSize: '80px', color: '#8B008B'}}>
+        Welcome!
+      </h1>
     </div>
   );    
 }
