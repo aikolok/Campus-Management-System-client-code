@@ -7,7 +7,7 @@ It constructs a React component to display the single student view page.
 import { Link } from "react-router-dom";
 
 const StudentView = (props) => {
-  const { student, deleteStudent } = props;
+  const { student, deleteStudent, editStudent } = props;
   let campusInfo;
   if (student.campus == null) {
     campusInfo = (<p>(Not currently enrolled in a college)</p>);
@@ -24,13 +24,27 @@ const StudentView = (props) => {
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
       <img src={student.imageUrl} height="100" width="100" alt="student avatar"/>
-      <p>First Name: {student.firstname}</p>
-      <p>Last Name: {student.lastname}</p>
-      <p>Email: {student.email}</p>
-      <p>GPA: {student.gpa}</p>
+      <p><strong>First Name:</strong> {student.firstname}</p>
+      <p><strong>Last Name:</strong> {student.lastname}</p>
+      <p><strong>Email:</strong> {student.email}</p>
+      <p><strong>GPA:</strong> {student.gpa}</p>
       {campusInfo}
+      <Link to={`/editstudent/${student.id}`}>
+        <button 
+          style={{backgroundColor: '#ADD8E6', padding: '7px 15px', 
+          borderRadius: '22px', fontWeight: 'bold', fontSize: '14px', color: '#11153e'}} 
+          onClick={() => editStudent(student)}>
+          Edit Student Information
+        </button>
+      </Link> 
+      <br/><br/>
       <Link to={'/students'}>
-      <button onClick={() => deleteStudent(student.id)}>Delete</button>
+      <button 
+        style={{backgroundColor: '#FFF0F5', padding: '7px 15px', 
+        borderRadius: '22px', fontWeight: 'bold', fontSize: '14px', color: 'red'}}
+        onClick={() => deleteStudent(student.id)}>
+        Delete Student
+      </button>
       </Link>
     </div>
   );
